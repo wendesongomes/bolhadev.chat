@@ -18,12 +18,12 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="dark relative flex h-auto flex-col ">
+      <body className="dark relative flex flex-col ">
         <Header />
         <Image
           src="/light-ray.svg"
           alt="Purple light ray"
-          width="1000"
+          width="950"
           height="800"
           className="animate-in fade-in slide-in-from-bottom-1 absolute -z-10 size-full"
           style={{ color: "transparent", animationDuration: "10s" }}

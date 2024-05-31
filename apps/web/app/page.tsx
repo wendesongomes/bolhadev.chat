@@ -3,23 +3,25 @@ import Link from "next/link";
 
 import { ChevronRight, Dumbbell, Heart, MessageCircle, PiggyBank } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { InfoCard } from "./components/info-card";
+import { InfoCard } from "@/components/info-card";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
 
 const infoCardContent = [
   {
-    icon: MessageCircle,
+    Icon: MessageCircle,
     content: 'The most effective way to improve your English is through speaking.'
   },
   {
-    icon: Dumbbell,
+    Icon: Dumbbell,
     content: 'Enhance your English skills quickly by practicing a little every day.'
   },
   {
-    icon: Heart,
+    Icon: Heart,
     content: 'Show respect, patience, and kindness to everyone.'
   },
   {
-    icon: PiggyBank,
+    Icon: PiggyBank,
     content: "And best of all, it's completely free."
   }
 ]
@@ -27,51 +29,37 @@ const infoCardContent = [
 
 export default function Page(): JSX.Element {
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col items-center justify-center">
       <section className="flex w-full flex-col lg:container lg:flex-row-reverse">
-        <div className="z-10 mt-16 flex w-full flex-col justify-center p-10 lg:w-1/2">
+        <div className="z-10 mt-16 flex w-full flex-col items-center justify-center gap-3 p-10">
           <h2
-            className="text-slate-6 w-full text-center text-[3rem] leading-10">
+            className="bg-gradient-to-br from-stone-50 to-violet-300 bg-clip-text p-3 text-center text-6xl font-bold leading-[50px] text-transparent lg:text-7xl">
             Practice English for free
           </h2>
-          <h3 className="my-4 text-center text-[1rem] text-slate-400">The quickest path to learning English is to speak it regularly. Just find someone to chat with.</h3>
-          <div className="flex w-full justify-center">
+          <h3 className="max-w-3xl text-center text-sm lg:text-base">The quickest path to learning English is to practice speaking it regularly. Connect with others for free 10-minute video chats and improve your skills in a friendly, safe environment. Join us now and start speaking English today!</h3>
+          <div className="mt-4 flex w-full justify-center">
             <Link href={`room/queue`}>
-              <Button className="h-12 min-w-max rounded-full text-base font-semibold text-black">
+              <Button className="min-w-max rounded-full bg-violet-600 text-base font-light text-white/90 transition-all duration-300 hover:scale-105 hover:bg-violet-800 hover:font-semibold hover:text-white">
                 Get Started
                 <ChevronRight size={16} />
               </Button>
             </Link>
           </div>
         </div>
-        <div className="flex w-full justify-center overflow-hidden lg:w-1/2">
-          <video
-            className="-z-20 w-full max-w-2xl"
-            style={{
-              display: "block",
-              width: "700px",
-              height: "500px",
-            }}
-            playsInline
-            loop={true}
-            autoPlay={true}
-            muted={true}
-            src="/earth.mp4"
-          ></video>
-        </div>
       </section>
-      <section
-        style={{boxShadow: "0px -20px 44px -60px rgb(255 255 255)"}}
-        className="border-slate-6 relative mt-10 flex flex-col items-center overflow-hidden rounded-3xl border-t px-6 py-12 lg:container sm:mx-5 sm:py-24 md:mx-10 lg:mx-auto">
-        <div
-          aria-hidden="true"
-          className="center pointer-events-none absolute -top-1 left-1/2 -z-20 h-[200px] w-full max-w-[200px] -translate-x-1/2 -translate-y-1/2 md:max-w-[400px]"
-          style={{
-            background: "conic-gradient(from 90deg at 50% 50%, #00000000 50%, #000 50%),radial-gradient(rgba(200,200,200,0.1) 0%, transparent 80%)"
-          }}
-          />
-        <div className="mt-10 flex w-full flex-col flex-wrap items-center justify-center gap-10 md:flex-row">
-          {infoCardContent.map((card, i) => <InfoCard icon={card.icon} content={card.content} key={i}/>)}
+      <section className="w-full">
+        <InfoCard info={infoCardContent} />
+      </section>
+
+      <section className="my-20 flex flex-col items-center justify-center gap-10 md:flex-row md:items-start md:px-10">
+        <Card className="border-slate-5 bg-slate-6 mx-10 border border-b-0 md:mx-0">
+          <CardContent className="max-w-[500px] p-5">
+            <Image src={'/user.png'} width={1000} height={1000} alt="" className="rounded-md" />
+          </CardContent>
+        </Card>
+        <div className="flex w-3/4 max-w-[900px] flex-col items-center gap-2">
+          <h2 className="text-4xl font-bold">Join the community</h2>
+          <p className="max-w-3xl text-sm lg:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio voluptatum repellendus doloremque non nulla explicabo id sit at iusto eum. At aperiam quaerat velit fugit corporis unde eaque id hic? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio voluptatum repellendus doloremque non nulla explicabo id sit at iusto eum. At aperiam quaerat velit fugit corporis unde eaque id hic? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio voluptatum repellendus doloremque non nulla explicabo id sit at iusto eum. At aperiam quaerat velit fugit corporis unde eaque id hic?</p>
         </div>
       </section>
     </main>
